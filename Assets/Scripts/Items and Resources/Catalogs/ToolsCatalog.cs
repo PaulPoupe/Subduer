@@ -1,1 +1,0 @@
-public class ToolsCatalog : Catalog<Tool> { }
