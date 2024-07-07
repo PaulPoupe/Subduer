@@ -1,4 +1,3 @@
-using System.Globalization;
 
 public class FoodStorage : Storage<Food>
 {
@@ -10,7 +9,6 @@ public class FoodStorage : Storage<Food>
         foreach (var foodBox in GetShelf())
             calorieReserve += CalorieCounter(foodBox);
         return calorieReserve;
-
     }
 
     private int CalorieCounter(Box<Food> box) => box.item.calorie * box.count;
