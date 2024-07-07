@@ -1,4 +1,3 @@
-
 using System;
 using UnityEngine;
 
@@ -16,6 +15,8 @@ public class Box<T> where T : Item
 
     public Box() { }
 
+    public event Action<int> OnUpdated;
+
     public T item { get; private set; }
     public int count { get; private set; }
 
@@ -26,6 +27,7 @@ public class Box<T> where T : Item
             if (addebleBox.item == item)
             {
                 count += addebleBox.count;
+                OnUpdated?.Invoke(count);
                 return true;
             }
             else return false;
@@ -34,6 +36,7 @@ public class Box<T> where T : Item
         {
             item = addebleBox.item;
             count += addebleBox.count;
+            OnUpdated?.Invoke(count);
             return true;
         }
     }
@@ -50,6 +53,7 @@ public class Box<T> where T : Item
             box = new Box<T>(item, count);
 
             this.count -= count;
+            OnUpdated?.Invoke(count);
             return box;
         }
 
@@ -69,6 +73,7 @@ public class Box<T> where T : Item
     {
         item = null;
         count = 0;
+        OnUpdated?.Invoke(count);
     }
 
     public int Capicity() => count * item.size;

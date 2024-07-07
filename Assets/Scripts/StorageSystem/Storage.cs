@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public class Storage<T> where T : Item
 {
-
     private List<Box<T>> shelf;
 
     private int maxCapicity;
