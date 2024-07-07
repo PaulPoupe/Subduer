@@ -1,1 +1,0 @@
-public class FoodCatalog : Catalog<Food> { }
