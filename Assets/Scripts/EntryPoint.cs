@@ -22,6 +22,7 @@ public class EntryPoint : MonoBehaviour
 
     private void GetCatalogs()
     {
+        catalogs = new ICatalog[_catalogs.Length];
         for (int i = 0; i < _catalogs.Length; i++)
         {
             catalogs[i] = (ICatalog)_catalogs[i];
