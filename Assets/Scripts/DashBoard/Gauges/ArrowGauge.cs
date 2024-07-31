@@ -5,19 +5,49 @@ using UnityEngine;
 
 public class ArrowGauge : MonoBehaviour, IGauge<float>
 {
+    private enum XYZ
+    {
+        x,
+        y,
+        z
+    }
+
     [SerializeField] private Transform arrow;
     [Space]
-    [SerializeField] private float zeroEngle;
-    [SerializeField] private float lastEngle;
+    [SerializeField] private float startEngle;
+    [SerializeField] private float finishEngle;
+    [SerializeField] private XYZ coordinates;
     [Space]
     [SerializeField] private float speed;
 
+    private Quaternion startQuaternion;
+    private Quaternion finishQuaternion;
 
     private float curentValue = 0.0f;
 
-    private void Start()
+
+    public void Initialize()
     {
-        SetValue(-90);
+        startQuaternion = new Quaternion();
+        finishQuaternion = new Quaternion();
+
+        switch (coordinates)
+        {
+            case XYZ.x:
+                startQuaternion = quaternion.Euler(startEngle, arrow.rotation.y, arrow.rotation.z);
+                finishQuaternion = quaternion.Euler(finishEngle, arrow.rotation.y, arrow.rotation.z);
+                break;
+
+            case XYZ.y:
+                startQuaternion = quaternion.Euler(arrow.rotation.x, startEngle, arrow.rotation.z);
+                finishQuaternion = quaternion.Euler(arrow.rotation.x, finishEngle, arrow.rotation.z);
+                break;
+
+            case XYZ.z:
+                startQuaternion = quaternion.Euler(arrow.rotation.x, arrow.rotation.y, startEngle);
+                finishQuaternion = quaternion.Euler(arrow.rotation.x, arrow.rotation.y, finishEngle);
+                break;
+        }
     }
 
     public IEnumerator Rotate(float requiredValue)
@@ -52,7 +82,7 @@ public class ArrowGauge : MonoBehaviour, IGauge<float>
 
         void Rotating()
         {
-            arrow.rotation = quaternion.EulerZXY(curentValue);
+            arrow.rotation = Quaternion.Lerp(startQuaternion, finishQuaternion, curentValue);
         }
     }
 
