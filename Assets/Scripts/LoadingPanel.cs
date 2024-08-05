@@ -37,7 +37,6 @@ public class LoadingPanel : MonoBehaviour
 
     private void ClosePanel()
     {
-        //ScenesManager.OnLoading -= OnStartAnimation;
         loadingPanel.SetActive(false);
     }
 }

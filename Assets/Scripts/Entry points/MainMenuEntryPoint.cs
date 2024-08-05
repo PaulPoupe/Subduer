@@ -3,20 +3,26 @@ using UnityEngine;
 
 public class MainMenuEntryPoint : MonoBehaviour, IEntryPoint
 {
-    [SerializeField] private LoadingPanel loadingPanel;
+    [SerializeField] private LoadingPanel loadingPanelPrefab;
+
+    private static LoadingPanel loadingPanel;
 
     public static bool isInit = false;
-    public static event Action<bool> OnInited;
+    public static event Action<bool> OnUpdated;
 
     private void Awake()
     {
-        loadingPanel.Initialize();
-        //Init...
-        //Init...
-        //Init...
-        //Init...
+        if (loadingPanel == null)
+        {
+            loadingPanel = Instantiate(loadingPanelPrefab);
+            loadingPanel.Initialize();
+        }
 
+        //Init...
+        //Init...
+        //Init...
+        //Init...
         isInit = true;
-        OnInited?.Invoke(isInit);
+        OnUpdated?.Invoke(isInit);
     }
 }

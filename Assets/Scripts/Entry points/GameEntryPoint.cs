@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameEntryPoint : MonoBehaviour, IEntryPoint
 {
     public static bool isInit = false;
-    public static event Action<bool> OnInited;
+    public static event Action<bool> OnUpdated;
 
     [SerializeField] private ScriptableObject[] catalogs;
 
@@ -13,7 +13,7 @@ public class GameEntryPoint : MonoBehaviour, IEntryPoint
         InitCatalogs();
 
         isInit = true;
-        OnInited?.Invoke(isInit);
+        OnUpdated?.Invoke(isInit);
 
         void InitCatalogs()
         {
