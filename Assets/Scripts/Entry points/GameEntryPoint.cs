@@ -10,9 +10,13 @@ public class GameEntryPoint : MonoBehaviour, IEntryPoint
 
     private void Start()
     {
-        InitCatalogs();
+        if (!isInit)
+        {
+            InitCatalogs();
 
-        isInit = true;
+            isInit = true;
+        }
+
         OnUpdated?.Invoke(isInit);
 
         void InitCatalogs()
