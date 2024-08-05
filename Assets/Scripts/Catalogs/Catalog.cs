@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Catalog<TItem> : ScriptableObject where TItem : ICatalogable
+public abstract class Catalog<TItem> : ScriptableObject, ICatalog where TItem : ICatalogable
 {
     [SerializeField]
     private TItem[] serializedCatalog;
