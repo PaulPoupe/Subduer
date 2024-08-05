@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BootStrapEntryPoint : MonoBehaviour
+public class BootStrapEntryPoint : MonoBehaviour, IEntryPoint
 {
-    [SerializeField] private ScriptableObject[] catalogs;
 
-    private CatalogInitializator catalogInitializator = new CatalogInitializator();
+
+    public static bool isInit = false;
+
 
     private void Awake()
     {
-        catalogInitializator.Initialize(catalogs);
+
         SceneManager.LoadScene(1);
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using MySceneManagement;
 using UnityEngine;
 
 public class LoadingPanel : MonoBehaviour
@@ -6,16 +7,19 @@ public class LoadingPanel : MonoBehaviour
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private Animator opacityAnimation;
 
-    private IEnumerator StartAnimation(AsyncOperation asyncOperation)
+    private IEnumerator StartAnimation(AsyncOperation asyncOperation, Scene scene)
     {
         loadingPanel.SetActive(true);
 
         while (asyncOperation.progress < 0.9f)
             yield return null;
 
-        opacityAnimation.Play("Opacity1-0");
-
         asyncOperation.allowSceneActivation = true;
+
+        while (!scene.isInit)
+            yield return null;
+
+        opacityAnimation.Play("Opacity1-0");
 
         while (opacityAnimation.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
             yield return null;
@@ -23,7 +27,7 @@ public class LoadingPanel : MonoBehaviour
         ClosePanel();
     }
 
-    private void OnStartAnimation(AsyncOperation asyncOperation) => StartCoroutine(StartAnimation(asyncOperation));
+    private void OnStartAnimation(AsyncOperation asyncOperation, Scene scene) => StartCoroutine(StartAnimation(asyncOperation, scene));
 
     public void Initialize()
     {
@@ -33,6 +37,7 @@ public class LoadingPanel : MonoBehaviour
 
     private void ClosePanel()
     {
+        //ScenesManager.OnLoading -= OnStartAnimation;
         loadingPanel.SetActive(false);
     }
 }
