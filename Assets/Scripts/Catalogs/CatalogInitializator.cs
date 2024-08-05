@@ -1,23 +1,21 @@
-
 using UnityEngine;
 
-public class EntryPoint : MonoBehaviour
+public class CatalogInitializator
 {
-    [SerializeField]
     private ScriptableObject[] _catalogs;
 
     private ICatalog[] catalogs;
 
-    private void Awake()
+    public void Initialize(ScriptableObject[] _catalogs)
     {
+        this._catalogs = _catalogs;
+
         GetCatalogs();
 
         foreach (var catalog in catalogs)
         {
             catalog.Initialize();
         }
-
-        Destroy(this);
     }
 
     private void GetCatalogs()
