@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameEntryPoint : MonoBehaviour, IEntryPoint
 {
-    public static bool isInit = false;
+    public static bool isInit { get; private set; }
     public static event Action<bool> OnUpdated;
 
     [SerializeField] private ScriptableObject[] catalogs;
@@ -18,12 +18,12 @@ public class GameEntryPoint : MonoBehaviour, IEntryPoint
         }
 
         OnUpdated?.Invoke(isInit);
+    }
 
-        void InitCatalogs()
+    private void InitCatalogs()
+    {
+        if (catalogs != null)
         {
-            if (catalogs == null)
-                return;
-
             CatalogInitializator catalogInitializator = new CatalogInitializator();
             catalogInitializator.Initialize(catalogs);
         }

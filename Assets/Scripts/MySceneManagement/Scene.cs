@@ -1,4 +1,3 @@
-using System;
 
 namespace MySceneManagement
 {
@@ -6,6 +5,7 @@ namespace MySceneManagement
     {
         public readonly string name;
         public bool isInit;
+
 
         public Scene(string name)
         {
