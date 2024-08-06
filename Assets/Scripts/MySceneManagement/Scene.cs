@@ -12,7 +12,7 @@ namespace MySceneManagement
             this.name = name;
         }
 
-        public void SetIsInit(bool isInit) => this.isInit = isInit;
+        public void isInitStateUpdate(bool initState) => isInit = initState;
 
     }
 }

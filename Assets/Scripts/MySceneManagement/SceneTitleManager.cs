@@ -8,8 +8,8 @@ namespace MySceneManagement
 
         static SceneTitleManager()
         {
-            GameEntryPoint.OnUpdated += game.SetIsInit;
-            MainMenuEntryPoint.OnUpdated += mainMenu.SetIsInit;
+            GameEntryPoint.OnStateUpdated += game.isInitStateUpdate;
+            MainMenuEntryPoint.OnUpdated += mainMenu.isInitStateUpdate;
         }
 
     }
