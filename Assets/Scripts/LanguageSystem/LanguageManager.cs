@@ -6,6 +6,9 @@ public class LanguageManager
 
     public void Initialize(TextPoket[] textPokets)
     {
+        if (textPokets == null)
+            return;
+
         foreach (var textPoket in textPokets)
         {
             textPoket.Initialize();
