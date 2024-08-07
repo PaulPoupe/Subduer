@@ -17,6 +17,7 @@ public class TextPoket : ScriptableObject
     {
         foreach (var text in texts)
         {
+            text.Initialize();
             multyLangugeTexts.Add(text.language, text.text);
         }
     }

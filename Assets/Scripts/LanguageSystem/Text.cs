@@ -18,7 +18,7 @@ public class Text : ScriptableObject
     public Language language { get; private set; }
     public string text { get; private set; }
 
-    private void Awake()
+    public void Initialize()
     {
         language = _language;
         text = _text;
