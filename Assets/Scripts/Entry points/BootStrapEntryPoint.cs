@@ -1,24 +1,54 @@
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using LanguageSystem;
+using MySceneManagement;
 
-public class BootStrapEntryPoint : MonoBehaviour, IEntryPoint
+namespace EntryPoint
 {
-    public static bool isInit = false;
-
-    [SerializeField] private TextPoket[] allTextPokets;
-    private const Language defaultLanguage = Language.English;
-
-    private void Awake()
+    [DisallowMultipleComponent]
+    [AddComponentMenu("Entry points/ Bootstrap entry point")]
+    public class BootStrapEntryPoint : MonoBehaviour, IEntryPoint
     {
-        InitializeLanguageManager();
+        public static bool isInit = false;
+        public static event Action<bool> OnStateUpdated;
 
-        SceneManager.LoadScene(1);
-    }
+        [SerializeField] private LoadingScreen loadingPanelPrefab;
+        private static LoadingScreen loadingPanel;
 
-    private void InitializeLanguageManager()
-    {
-        LanguageManager languageManager = new LanguageManager();
-        languageManager.Initialize(allTextPokets);
-        LanguageManager.SetLanguage(defaultLanguage);
+        [Space(10.0f)]
+
+        [SerializeField] private TextLanguagePacket[] allTextPokets;
+        private const Language defaultLanguage = Language.Russian;
+
+        private void Start()
+        {
+            if (loadingPanel == null)
+                CreateLoadingPanel();
+
+            if (!isInit)
+            {
+                InitializeLanguageManager();
+                //Init...
+                //Init...
+                //Init...
+                //Init...
+                isInit = true;
+            }
+
+            ScenesManager.LoadScene(CurentScenes.mainMenu);
+        }
+
+        private void InitializeLanguageManager()
+        {
+            LanguageManager languageManager = new LanguageManager();
+            languageManager.Initialize(allTextPokets);
+            LanguageManager.SetLanguage(defaultLanguage);
+        }
+
+        private void CreateLoadingPanel()
+        {
+            loadingPanel = Instantiate(loadingPanelPrefab);
+            loadingPanel.Initialize();
+        }
     }
 }

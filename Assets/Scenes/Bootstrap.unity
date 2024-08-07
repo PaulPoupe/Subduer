@@ -166,7 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4202e853e0b501d4e8d15bfd6b8a6b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allTextPokets: []
+  loadingPanelPrefab: {fileID: 4326771732779725712, guid: b7868fd8d302fbf42a88d69343f85c8d,
+    type: 3}
+  allTextPokets:
+  - {fileID: 11400000, guid: 03a63e2eb82724c449c00d8bc0a94939, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

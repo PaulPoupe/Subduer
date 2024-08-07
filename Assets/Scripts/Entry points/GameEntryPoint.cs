@@ -1,32 +1,41 @@
 using System;
+using Catalogs;
 using UnityEngine;
 
-public class GameEntryPoint : MonoBehaviour, IEntryPoint
+namespace EntryPoint
 {
-    public static bool isInit { get; private set; }
-    public static event Action<bool> OnStateUpdated;
-
-    [SerializeField] private ScriptableObject[] catalogs;
-
-    private void Start()
+    [DisallowMultipleComponent]
+    [AddComponentMenu("Entry points/ Game entry point")]
+    public class GameEntryPoint : MonoBehaviour, IEntryPoint
     {
-        if (!isInit)
-        {
-            InitCatalogs();
+        public static bool isInit { get; private set; }
+        public static event Action<bool> OnStateUpdated;
 
-            isInit = true;
+        [SerializeField] private ScriptableObject[] catalogs;
+
+        private void Start()
+        {
+            if (!isInit)
+            {
+                InitCatalogs();
+                //Init...
+                //Init...
+                //Init...
+                //Init...
+                isInit = true;
+            }
+
+            OnStateUpdated?.Invoke(isInit);
         }
 
-        OnStateUpdated?.Invoke(isInit);
-    }
-
-    private void InitCatalogs()
-    {
-        if (catalogs != null)
+        private void InitCatalogs()
         {
-            CatalogInitializator catalogInitializator = new CatalogInitializator();
-            catalogInitializator.Initialize(catalogs);
+            if (catalogs != null)
+            {
+                CatalogInitializator catalogInitializator = new CatalogInitializator();
+                catalogInitializator.Initialize(catalogs);
+            }
         }
-    }
 
+    }
 }

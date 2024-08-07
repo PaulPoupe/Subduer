@@ -1,15 +1,17 @@
-
-public class FoodStorage : Storage<Food>
+namespace BoxSystem
 {
-    public FoodStorage(int maxCapicity) : base(maxCapicity) { }
-
-    public int GetCalorieReserve()
+    public class FoodStorage : Storage<Food>
     {
-        int calorieReserve = 0;
-        foreach (var foodBox in GetShelf())
-            calorieReserve += CalorieCounter(foodBox);
-        return calorieReserve;
-    }
+        public FoodStorage(int maxCapicity) : base(maxCapicity) { }
 
-    private int CalorieCounter(Box<Food> box) => box.item.calorie * box.count;
+        public int GetCalorieReserve()
+        {
+            int calorieReserve = 0;
+            foreach (var foodBox in GetShelf())
+                calorieReserve += CalorieCounter(foodBox);
+            return calorieReserve;
+        }
+
+        private int CalorieCounter(Box<Food> box) => box.item.calorie * box.count;
+    }
 }

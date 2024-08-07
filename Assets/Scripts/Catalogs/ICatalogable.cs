@@ -1,4 +1,7 @@
-public interface ICatalogable
+namespace Catalogs
 {
-    public string name { get; }
+    public interface ICatalogable
+    {
+        public string name { get; }
+    }
 }

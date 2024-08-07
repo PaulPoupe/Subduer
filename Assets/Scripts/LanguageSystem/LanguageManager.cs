@@ -1,23 +1,26 @@
 using System;
 
-public class LanguageManager
+namespace LanguageSystem
 {
-    private static event Action<Language> OnSetLanguage;
-
-    public void Initialize(TextPoket[] textPokets)
+    public class LanguageManager
     {
-        if (textPokets == null)
-            return;
+        private static event Action<Language> OnSetLanguage;
 
-        foreach (var textPoket in textPokets)
+        public void Initialize(TextLanguagePacket[] textPokets)
         {
-            textPoket.Initialize();
-            OnSetLanguage += textPoket.SetLanguage;
-        }
-    }
+            if (textPokets == null)
+                return;
 
-    public static void SetLanguage(Language language)
-    {
-        OnSetLanguage?.Invoke(language);
+            foreach (var textPoket in textPokets)
+            {
+                textPoket.Initialize();
+                OnSetLanguage += textPoket.SetLanguage;
+            }
+        }
+
+        public static void SetLanguage(Language language)
+        {
+            OnSetLanguage?.Invoke(language);
+        }
     }
 }

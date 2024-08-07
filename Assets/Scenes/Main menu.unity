@@ -564,8 +564,8 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -825,8 +825,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090c50915ce95c646ae78f27492dfa3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingPanelPrefab: {fileID: 4326771732779725712, guid: b7868fd8d302fbf42a88d69343f85c8d,
-    type: 3}
 --- !u!4 &1665732518
 Transform:
   m_ObjectHideFlags: 0

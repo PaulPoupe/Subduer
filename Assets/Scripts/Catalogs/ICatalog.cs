@@ -1,4 +1,7 @@
-public interface ICatalog
+namespace Catalogs
 {
-    public void Initialize();
+    public interface ICatalog
+    {
+        public void Initialize();
+    }
 }

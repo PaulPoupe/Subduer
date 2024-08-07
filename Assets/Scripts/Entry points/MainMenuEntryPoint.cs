@@ -1,32 +1,31 @@
 using System;
 using UnityEngine;
 
-public class MainMenuEntryPoint : MonoBehaviour, IEntryPoint
+namespace EntryPoint
 {
-    [SerializeField] private LoadingPanel loadingPanelPrefab;
-
-    private static LoadingPanel loadingPanel;
-
-    public static bool isInit = false;
-    public static event Action<bool> OnUpdated;
-
-    private void Awake()
+    [DisallowMultipleComponent]
+    [AddComponentMenu("Entry points/ Main menu entry point")]
+    public class MainMenuEntryPoint : MonoBehaviour, IEntryPoint
     {
-        if (loadingPanel == null)
+
+
+        public static bool isInit = false;
+        public static event Action<bool> OnStateUpdated;
+
+        private void Awake()
         {
-            loadingPanel = Instantiate(loadingPanelPrefab);
-            loadingPanel.Initialize();
+            if (!isInit)
+            {
+                //Init...
+                //Init...
+                //Init...
+                //Init...
+                isInit = true;
+            }
+
+            OnStateUpdated?.Invoke(isInit);
         }
 
-        if (!isInit)
-        {
-            //Init...
-            //Init...
-            //Init...
-            //Init...
-            isInit = true;
-        }
 
-        OnUpdated?.Invoke(isInit);
     }
 }

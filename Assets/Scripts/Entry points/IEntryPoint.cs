@@ -1,1 +1,4 @@
-public interface IEntryPoint { }
+namespace EntryPoint
+{
+    public interface IEntryPoint { }
+}

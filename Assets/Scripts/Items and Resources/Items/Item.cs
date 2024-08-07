@@ -1,3 +1,4 @@
+using Catalogs;
 using UnityEngine;
 
 public abstract class Item : ScriptableObject, ICatalogable

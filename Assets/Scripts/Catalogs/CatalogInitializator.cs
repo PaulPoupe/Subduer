@@ -1,31 +1,34 @@
 using UnityEngine;
 
-public class CatalogInitializator
+namespace Catalogs
 {
-    private ScriptableObject[] _catalogs;
-
-    private ICatalog[] catalogs;
-
-    public void Initialize(ScriptableObject[] _catalogs)
+    public class CatalogInitializator
     {
-        this._catalogs = _catalogs;
+        private ScriptableObject[] _catalogs;
 
-        GetCatalogs();
+        private ICatalog[] catalogs;
 
-        foreach (var catalog in catalogs)
+        public void Initialize(ScriptableObject[] _catalogs)
         {
-            catalog.Initialize();
+            this._catalogs = _catalogs;
+
+            GetCatalogs();
+
+            foreach (var catalog in catalogs)
+            {
+                catalog.Initialize();
+            }
         }
-    }
 
-    private void GetCatalogs()
-    {
-        catalogs = new ICatalog[_catalogs.Length];
-
-        for (int i = 0; i < _catalogs.Length; i++)
+        private void GetCatalogs()
         {
-            catalogs[i] = (ICatalog)_catalogs[i];
-        }
-    }
+            catalogs = new ICatalog[_catalogs.Length];
 
+            for (int i = 0; i < _catalogs.Length; i++)
+            {
+                catalogs[i] = (ICatalog)_catalogs[i];
+            }
+        }
+
+    }
 }
