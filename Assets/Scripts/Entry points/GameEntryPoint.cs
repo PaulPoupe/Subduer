@@ -12,12 +12,14 @@ namespace EntryPoint
         public static event Action<bool> OnStateUpdated;
 
         [SerializeField] private ScriptableObject[] catalogs;
+        [SerializeField] private Clock clock;
 
         private void Start()
         {
             if (!isInit)
             {
                 InitCatalogs();
+                clock.StartClock();
                 //Init...
                 //Init...
                 //Init...

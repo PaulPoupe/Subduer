@@ -32,7 +32,7 @@ namespace MySceneManagement
 
         public void Initialize()
         {
-            ScenesManager.OnLoading += OnStartAnimation;
+            SceneManager.OnLoading += OnStartAnimation;
             DontDestroyOnLoad(this);
         }
 
@@ -40,6 +40,5 @@ namespace MySceneManagement
         {
             loadingPanel.SetActive(false);
         }
-
     }
 }

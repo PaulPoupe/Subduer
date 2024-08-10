@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace LanguageSystem
@@ -9,8 +10,8 @@ namespace LanguageSystem
         Belarusian,
     }
 
-    [CreateAssetMenu(fileName = "Text", menuName = "My text/Text")]
-    internal class Text : ScriptableObject
+    [Serializable]
+    internal class Text
     {
         [SerializeField] private Language _language;
         [SerializeField, TextArea(0, 999)] private string _text;

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using LanguageSystem;
 using MySceneManagement;
@@ -10,7 +9,7 @@ namespace EntryPoint
     public class BootStrapEntryPoint : MonoBehaviour, IEntryPoint
     {
         public static bool isInit = false;
-        public static event Action<bool> OnStateUpdated;
+        //public static event Action<bool> OnStateUpdated;
 
         [SerializeField] private LoadingScreen loadingPanelPrefab;
         private static LoadingScreen loadingPanel;
@@ -35,7 +34,7 @@ namespace EntryPoint
                 isInit = true;
             }
 
-            ScenesManager.LoadScene(CurentScenes.mainMenu);
+            SceneManager.LoadScene(CurentScenes.mainMenu);
         }
 
         private void InitializeLanguageManager()

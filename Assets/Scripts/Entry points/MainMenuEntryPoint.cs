@@ -7,6 +7,7 @@ namespace EntryPoint
     [AddComponentMenu("Entry points/ Main menu entry point")]
     public class MainMenuEntryPoint : MonoBehaviour, IEntryPoint
     {
+        [SerializeField] SettingsPanel settingsPanel;
 
 
         public static bool isInit = false;
@@ -16,7 +17,7 @@ namespace EntryPoint
         {
             if (!isInit)
             {
-                //Init...
+                settingsPanel.Initialize();
                 //Init...
                 //Init...
                 //Init...

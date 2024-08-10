@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   texts:
-  - {fileID: 11400000, guid: 2cad6045081c5d54d9f8a21fdb71f288, type: 2}
-  - {fileID: 11400000, guid: 46db257193ed1c04288db0066441c507, type: 2}
-  - {fileID: 11400000, guid: 516b6e54bb550aa4fa287edafb0ab587, type: 2}
+  - _language: 0
+    _text: 
+  - _language: 0
+    _text: 
+  - _language: 0
+    _text: 

@@ -1,4 +1,2 @@
 namespace EntryPoint
-{
-    public interface IEntryPoint { }
-}
+{ public interface IEntryPoint { } }
