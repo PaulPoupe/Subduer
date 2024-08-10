@@ -1,38 +1,22 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SettingsPanel : MonoBehaviour
 {
-    [SerializeField] private GameObject _prefab;
-    private static GameObject prefab;
+    [SerializeField] private GameObject _settingsPanelPrefab;
+    private static GameObject settingsPanelPrefab;
+    private static GameObject settingPanel;
 
-    private static bool isOpened;
 
     public void Initialize()
     {
-        prefab = _prefab;
+        settingsPanelPrefab = _settingsPanelPrefab;
     }
 
-    public static void Open(Transform parent)
+    public static void Open(Transform transform)
     {
-
-        if (!isOpened)
-        {
-            Instantiate(prefab, parent);
-            isOpened = true;
-        }
-    }
-
-    public void Close()
-    {
-        if (isOpened)
-        {
-            Destroy(this);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        isOpened = false;
+        if (settingPanel == null)
+            settingPanel = Instantiate(settingsPanelPrefab, transform);
+        else
+            Destroy(settingPanel);
     }
 }

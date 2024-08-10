@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090c50915ce95c646ae78f27492dfa3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsPanel: {fileID: -3841788167384990461, guid: 576c4a4ba55d7bc4ab60a7edb50bd770,
+  settingsPanel: {fileID: 2528020158358579572, guid: aa74b67e479f91742b7471d13b28b3d0,
     type: 3}
 --- !u!4 &1665732518
 Transform:
@@ -948,7 +948,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1810944434}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 507729413}
+        m_TargetAssemblyTypeName: MainMenuButtons, Assembly-CSharp
+        m_MethodName: ExitToDescktop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1810944434
 MonoBehaviour:
   m_ObjectHideFlags: 0

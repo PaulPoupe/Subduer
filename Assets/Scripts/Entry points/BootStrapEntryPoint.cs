@@ -6,11 +6,8 @@ namespace EntryPoint
 {
     [DisallowMultipleComponent]
     [AddComponentMenu("Entry points/ Bootstrap entry point")]
-    public class BootStrapEntryPoint : MonoBehaviour, IEntryPoint
+    internal class BootStrapEntryPoint : EntryPoint
     {
-        public static bool isInit = false;
-        //public static event Action<bool> OnStateUpdated;
-
         [SerializeField] private LoadingScreen loadingPanelPrefab;
         private static LoadingScreen loadingPanel;
 
@@ -18,6 +15,13 @@ namespace EntryPoint
 
         [SerializeField] private TextLanguagePacket[] allTextPokets;
         private const Language defaultLanguage = Language.Russian;
+
+        public static bool isInit { get; protected set; }
+
+        /* To do:
+            Сделать инициализацию припомощи static ивентов нескольких уровней. 
+            InitUi.Invoke();
+        */
 
         private void Start()
         {

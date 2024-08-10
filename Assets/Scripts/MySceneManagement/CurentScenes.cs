@@ -10,7 +10,7 @@ namespace MySceneManagement
 
         static CurentScenes()
         {
-            //BootStrapEntryPoint.OnStateUpdated += bootstrap.IsInitStateUpdate;
+            BootStrapEntryPoint.OnStateUpdated += bootstrap.IsInitStateUpdate;
             MainMenuEntryPoint.OnStateUpdated += mainMenu.IsInitStateUpdate;
             GameEntryPoint.OnStateUpdated += game.IsInitStateUpdate;
         }

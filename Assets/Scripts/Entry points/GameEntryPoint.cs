@@ -1,4 +1,3 @@
-using System;
 using Catalogs;
 using UnityEngine;
 
@@ -6,21 +5,21 @@ namespace EntryPoint
 {
     [DisallowMultipleComponent]
     [AddComponentMenu("Entry points/ Game entry point")]
-    public class GameEntryPoint : MonoBehaviour, IEntryPoint
+    internal class GameEntryPoint : EntryPoint
     {
-        public static bool isInit { get; private set; }
-        public static event Action<bool> OnStateUpdated;
-
         [SerializeField] private ScriptableObject[] catalogs;
         [SerializeField] private Clock clock;
+        [SerializeField] private EscMenu escMenu;
+
+        public static bool isInit { get; protected set; }
 
         private void Start()
         {
             if (!isInit)
             {
                 InitCatalogs();
+                escMenu.Initialize();
                 clock.StartClock();
-                //Init...
                 //Init...
                 //Init...
                 //Init...
