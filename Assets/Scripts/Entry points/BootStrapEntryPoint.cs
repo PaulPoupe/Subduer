@@ -9,35 +9,22 @@ namespace EntryPoint
     internal class BootStrapEntryPoint : EntryPoint
     {
         [SerializeField] private LoadingScreen loadingPanelPrefab;
-        private static LoadingScreen loadingPanel;
-
         [Space(10.0f)]
-
         [SerializeField] private TextLanguagePacket[] allTextPokets;
-        private const Language defaultLanguage = Language.Russian;
 
-        public static bool isInit { get; protected set; }
-
-        /* To do:
-            Сделать инициализацию припомощи static ивентов нескольких уровней. 
-            InitUi.Invoke();
-        */
 
         private void Start()
         {
             if (loadingPanel == null)
-                CreateLoadingPanel();
+                CreateLoadingScreen();
 
-            if (!isInit)
-            {
-                InitializeLanguageManager();
-                //Init...
-                //Init...
-                //Init...
-                //Init...
-                isInit = true;
-            }
+            InitializeLanguageManager();
+            //Init...
+            //Init...
+            //Init...
+            //Init...
 
+            OnStateUpdated?.Invoke(true);
             SceneManager.LoadScene(CurentScenes.mainMenu);
         }
 
@@ -45,10 +32,13 @@ namespace EntryPoint
         {
             LanguageManager languageManager = new LanguageManager();
             languageManager.Initialize(allTextPokets);
-            LanguageManager.SetLanguage(defaultLanguage);
+            LanguageManager.SetLanguage();
         }
 
-        private void CreateLoadingPanel()
+        /* To do: 
+            1. CreateLoadingPanel это не должно быть в этом классе.
+        */
+        private void CreateLoadingScreen()
         {
             loadingPanel = Instantiate(loadingPanelPrefab);
             loadingPanel.Initialize();

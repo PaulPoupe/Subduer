@@ -26,7 +26,10 @@ namespace LanguageSystem
 
         public void SetLanguage(Language language)
         {
-            outputText = multyLangugeTexts[language];
+            if (multyLangugeTexts.ContainsKey(language))
+                outputText = multyLangugeTexts[language];
+            else
+                outputText = multyLangugeTexts[LanguageManager.defaultLanguage];
             OnUpdated?.Invoke();
         }
 

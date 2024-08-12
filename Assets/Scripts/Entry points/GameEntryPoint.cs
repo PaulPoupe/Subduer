@@ -11,22 +11,17 @@ namespace EntryPoint
         [SerializeField] private Clock clock;
         [SerializeField] private EscMenu escMenu;
 
-        public static bool isInit { get; protected set; }
 
         private void Start()
         {
-            if (!isInit)
-            {
-                InitCatalogs();
-                escMenu.Initialize();
-                clock.StartClock();
-                //Init...
-                //Init...
-                //Init...
-                isInit = true;
-            }
+            InitCatalogs();
+            escMenu.Initialize();
+            clock.StartClock();
+            //Init...
+            //Init...
+            //Init...
 
-            OnStateUpdated?.Invoke(isInit);
+            OnStateUpdated?.Invoke(true);
         }
 
         private void InitCatalogs()

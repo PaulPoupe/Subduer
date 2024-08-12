@@ -9,20 +9,15 @@ namespace EntryPoint
     {
         [SerializeField] SettingsPanel settingsPanel;
 
-        public static bool isInit { get; protected set; }
-
         private void Start()
         {
-            if (!isInit)
-            {
-                settingsPanel.Initialize();
-                //Init...
-                //Init...
-                //Init...
-                isInit = true;
-            }
+            settingsPanel.Initialize();
+            //Init...
+            //Init...
+            //Init...
 
-            OnStateUpdated?.Invoke(isInit);
+
+            OnStateUpdated?.Invoke(true);
         }
 
 

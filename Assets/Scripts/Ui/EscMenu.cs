@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class EscMenu : MonoBehaviour
 {
-    [SerializeField] GameObject escPanel;
-    private bool isOpen;
-
     public void Continue() => Close();
     public void Settings() => SettingsPanel.Open(transform.parent);
     public void ExitToMainMenu()
@@ -20,28 +17,30 @@ public class EscMenu : MonoBehaviour
     */
 
 
-
     public void Initialize()
     {
-        UIGameManager.Escape += Open;
+        KeyEventBus.Escape += Open;
     }
 
     private void Open()
     {
-        if (!isOpen)
-        {
-            isOpen = true;
-            escPanel.SetActive(true);
-        }
+        if (!gameObject.activeInHierarchy)
+            gameObject.SetActive(true);
+
         else
-        {
             Close();
-        }
     }
 
     private void Close()
     {
-        isOpen = false;
-        escPanel.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
+    private void UnSubscribe() => KeyEventBus.Escape -= Open;
+
+    private void OnDestroy()
+    {
+        Close();
+        UnSubscribe();
     }
 }

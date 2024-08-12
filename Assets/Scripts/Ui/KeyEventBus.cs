@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class UIGameManager : MonoBehaviour
+public class KeyEventBus : MonoBehaviour
 {
     public static event Action Escape;
 

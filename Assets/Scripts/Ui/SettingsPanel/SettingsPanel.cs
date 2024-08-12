@@ -1,8 +1,10 @@
+using LanguageSystem;
 using UnityEngine;
 
 public class SettingsPanel : MonoBehaviour
 {
     [SerializeField] private GameObject _settingsPanelPrefab;
+    [Space]
     private static GameObject settingsPanelPrefab;
     private static GameObject settingPanel;
 
@@ -19,4 +21,6 @@ public class SettingsPanel : MonoBehaviour
         else
             Destroy(settingPanel);
     }
+
+    public void UpdateLanguageSettings(int languageId) => LanguageManager.SetLanguage(languageId);
 }
