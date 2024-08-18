@@ -5,11 +5,12 @@ namespace MySceneManagement
 {
     internal class LoadingScreen : MonoBehaviour
     {
+        [SerializeField] private GameObject loadingScreen;
         [SerializeField] private Animator opacityAnimation;
 
         private IEnumerator StartAnimation(AsyncOperation asyncOperation, Scene scene)
         {
-            gameObject.SetActive(true);
+            loadingScreen.SetActive(true);
 
             while (asyncOperation.progress < 0.9f)
                 yield return null;
@@ -37,7 +38,7 @@ namespace MySceneManagement
 
         private void ClosePanel()
         {
-            gameObject.SetActive(false);
+            loadingScreen.SetActive(false);
         }
     }
 }

@@ -1,46 +1,29 @@
 using MySceneManagement;
 using UnityEngine;
 
-public class EscMenu : MonoBehaviour
+public class EscMenu : Panel
 {
+    [SerializeField] private Panel settingsPanel;
+
     public void Continue() => Close();
-    public void Settings() => SettingsPanel.Open(transform.parent);
+
+    public void Settings() => settingsPanel.Open();
+
     public void ExitToMainMenu()
     {
         Close();
         SceneManager.LoadScene(CurentScenes.mainMenu);
     }
 
-    /*  To do:
-        1. перемещение Esc панели в сторону от панели настроек.
-        2. fix баг при перезаходе и повторном открытии.
-    */
-
-
-    public void Initialize()
+    public override void Initialize()
     {
-        KeyEventBus.Escape += Open;
+        OnClose += settingsPanel.Close;
+        KeyEventBus.OnEscape += Open;
     }
 
-    private void Open()
+    protected override void UnSubscribe()
     {
-        if (!gameObject.activeInHierarchy)
-            gameObject.SetActive(true);
-
-        else
-            Close();
-    }
-
-    private void Close()
-    {
-        gameObject.SetActive(false);
-    }
-
-    private void UnSubscribe() => KeyEventBus.Escape -= Open;
-
-    private void OnDestroy()
-    {
-        Close();
-        UnSubscribe();
+        OnClose -= settingsPanel.Close;
+        KeyEventBus.OnEscape -= Open;
     }
 }

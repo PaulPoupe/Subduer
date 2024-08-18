@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace EntryPoint
@@ -7,7 +6,7 @@ namespace EntryPoint
     [AddComponentMenu("Entry points/ Main menu entry point")]
     internal class MainMenuEntryPoint : EntryPoint
     {
-        [SerializeField] SettingsPanel settingsPanel;
+        [SerializeField] Panel settingsPanel;
 
         private void Start()
         {
@@ -17,9 +16,13 @@ namespace EntryPoint
             //Init...
 
 
-            OnStateUpdated?.Invoke(true);
+            Finish();
         }
 
+        protected override void Finish()
+        {
+            OnStateUpdated?.Invoke(true);
+        }
 
     }
 }

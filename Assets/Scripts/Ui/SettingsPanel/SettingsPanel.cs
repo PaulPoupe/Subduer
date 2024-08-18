@@ -1,26 +1,14 @@
-using LanguageSystem;
-using UnityEngine;
-
-public class SettingsPanel : MonoBehaviour
+public class SettingsPanel : Panel
 {
-    [SerializeField] private GameObject _settingsPanelPrefab;
-    [Space]
-    private static GameObject settingsPanelPrefab;
-    private static GameObject settingPanel;
-
-
-    public void Initialize()
+    public override void Initialize()
     {
-        settingsPanelPrefab = _settingsPanelPrefab;
+        KeyEventBus.OnEscape += Close;
     }
 
-    public static void Open(Transform transform)
+    protected override void UnSubscribe()
     {
-        if (settingPanel == null)
-            settingPanel = Instantiate(settingsPanelPrefab, transform);
-        else
-            Destroy(settingPanel);
+        KeyEventBus.OnEscape -= Close;
     }
 
-    public void UpdateLanguageSettings(int languageId) => LanguageManager.SetLanguage(languageId);
+    public void SetLanguage(int languageId) => Settings.language.SetLanguage(languageId);
 }

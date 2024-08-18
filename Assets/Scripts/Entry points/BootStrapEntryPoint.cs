@@ -10,7 +10,7 @@ namespace EntryPoint
     {
         [SerializeField] private LoadingScreen loadingPanelPrefab;
         [Space(10.0f)]
-        [SerializeField] private TextLanguagePacket[] allTextPokets;
+        [SerializeField] private TextLanguagePacket[] textPokets;
 
 
         private void Start()
@@ -18,21 +18,19 @@ namespace EntryPoint
             if (loadingPanel == null)
                 CreateLoadingScreen();
 
-            InitializeLanguageManager();
+            Settings.InitializeLanguageSettings(textPokets);
             //Init...
             //Init...
             //Init...
             //Init...
 
-            OnStateUpdated?.Invoke(true);
-            SceneManager.LoadScene(CurentScenes.mainMenu);
+            Finish();
         }
 
-        private void InitializeLanguageManager()
+        protected override void Finish()
         {
-            LanguageManager languageManager = new LanguageManager();
-            languageManager.Initialize(allTextPokets);
-            LanguageManager.SetLanguage();
+            OnStateUpdated?.Invoke(true);
+            SceneManager.LoadScene(CurentScenes.mainMenu);
         }
 
         /* To do: 

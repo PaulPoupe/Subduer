@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class KeyEventBus : MonoBehaviour
 {
-    public static event Action Escape;
+    public static event Action OnEscape;
 
-    private void Update()
+    private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Escape?.Invoke();
-        }
+            OnEscape?.Invoke();
+
     }
 }

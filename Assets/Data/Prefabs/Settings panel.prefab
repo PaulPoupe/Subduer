@@ -434,7 +434,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2528020158358579572}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SettingsPanel, Assembly-CSharp
         m_MethodName: UpdateLanguageSettings
         m_Mode: 0
@@ -1087,7 +1087,7 @@ GameObject:
   - component: {fileID: 2136420065074981002}
   - component: {fileID: 382962746161228215}
   - component: {fileID: 151760294860835358}
-  - component: {fileID: 2528020158358579572}
+  - component: {fileID: 3570075248796091758}
   m_Layer: 5
   m_Name: Settings panel
   m_TagString: Untagged
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2528020158358579572
+--- !u!114 &3570075248796091758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1162,10 +1162,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8130407313557827747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be6268cb34611e4468c8ae6226c669eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 35c062058753d474cbf4ebd5f6a04f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _settingsPanelPrefab: {fileID: 8130407313557827747}
 --- !u!1 &8233051384625723106
 GameObject:
   m_ObjectHideFlags: 0

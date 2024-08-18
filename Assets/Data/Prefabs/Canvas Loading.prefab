@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87178b994bd3fda409673c71c2274832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingPanel: {fileID: 8402873896689975660}
+  loadingScreen: {fileID: 8402873896689975660}
   opacityAnimation: {fileID: 2442263196833324161}
 --- !u!1 &2828253662197809287
 GameObject:
@@ -515,7 +515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &742416601729429725
 RectTransform:
   m_ObjectHideFlags: 0
