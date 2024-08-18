@@ -1,13 +1,16 @@
+
 public class SettingsPanel : Panel
 {
-    public override void Initialize()
+    protected override void Subscribe()
     {
-        KeyEventBus.OnEscape += Close;
+        if (isExternalPanel)
+            KeyEventBus.OnEscape += Close;
     }
 
     protected override void UnSubscribe()
     {
-        KeyEventBus.OnEscape -= Close;
+        if (isExternalPanel)
+            KeyEventBus.OnEscape -= Close;
     }
 
     public void SetLanguage(int languageId) => Settings.language.SetLanguage(languageId);

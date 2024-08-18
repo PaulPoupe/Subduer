@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EscMenu : Panel
 {
-    [SerializeField] private Panel settingsPanel;
+    private Panel settingsPanel;
 
     public void Continue() => Close();
 
@@ -15,7 +15,14 @@ public class EscMenu : Panel
         SceneManager.LoadScene(CurentScenes.mainMenu);
     }
 
-    public override void Initialize()
+
+    public override void Initialize(bool isExternalPanel, Panel settingsPanel)
+    {
+        this.settingsPanel = settingsPanel;
+        base.Initialize(isExternalPanel, settingsPanel);
+    }
+
+    protected override void Subscribe()
     {
         OnClose += settingsPanel.Close;
         KeyEventBus.OnEscape += Open;

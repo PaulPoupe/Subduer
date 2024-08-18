@@ -9,15 +9,15 @@ namespace EntryPoint
     {
         [SerializeField] private ScriptableObject[] catalogs;
         [SerializeField] private Clock clock;
-        [SerializeField] private EscMenu escMenu;
+        [SerializeField] private Panel escMenu;
         [SerializeField] private Panel settingsPanel;
 
 
         private void Start()
         {
             InitCatalogs();
-            escMenu.Initialize();
-            settingsPanel.Initialize();
+            escMenu.Initialize(true, settingsPanel);
+            settingsPanel.Initialize(false);
             clock.StartClock();
             //Init...
             //Init...

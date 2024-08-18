@@ -3,10 +3,21 @@ using UnityEngine;
 
 public abstract class Panel : MonoBehaviour
 {
+    protected bool isExternalPanel;
     protected event Action OnClose;
 
-    public abstract void Initialize();
+    public virtual void Initialize(bool isExternalPanel)
+    {
+        this.isExternalPanel = isExternalPanel;
+        Subscribe();
+    }
 
+    public virtual void Initialize(bool isExternalPanel, Panel chiledPanel) => Initialize(isExternalPanel);
+
+    protected abstract void Subscribe();
+    protected abstract void UnSubscribe();
+
+    private void OnDestroy() => UnSubscribe();
 
     public void Open()
     {
@@ -19,14 +30,10 @@ public abstract class Panel : MonoBehaviour
 
     public void Close()
     {
-        if (gameObject.activeInHierarchy)
+        if (gameObject != null && gameObject.activeInHierarchy)
         {
             gameObject.SetActive(false);
             OnClose?.Invoke();
         }
     }
-
-    private void OnDestroy() => UnSubscribe();
-
-    protected abstract void UnSubscribe();
 }
