@@ -23,13 +23,14 @@ public abstract class Panel : MonoBehaviour
     {
         if (!gameObject.activeInHierarchy)
             gameObject.SetActive(true);
+
         else
             Close();
     }
 
     public void Close()
     {
-        if (gameObject.activeInHierarchy)
+        if (gameObject != null && gameObject.activeInHierarchy)
         {
             gameObject.SetActive(false);
             OnClose?.Invoke();

@@ -16,8 +16,8 @@ namespace EntryPoint
         private void Start()
         {
             InitCatalogs();
-            settingsPanel.Initialize(false);
             escMenu.Initialize(true, settingsPanel);
+            settingsPanel.Initialize(false);
             clock.StartClock();
             //Init...
             //Init...
