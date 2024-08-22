@@ -9,6 +9,5 @@ public class KeyEventBus : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             OnEscape?.Invoke();
-
     }
 }
