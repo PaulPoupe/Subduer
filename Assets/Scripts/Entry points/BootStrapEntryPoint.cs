@@ -41,5 +41,10 @@ namespace EntryPoint
             loadingPanel = Instantiate(loadingPanelPrefab);
             loadingPanel.Initialize();
         }
+
+        protected override void OnDestroy()
+        {
+            //Unsubscribe();
+        }
     }
 }

@@ -40,5 +40,9 @@ namespace EntryPoint
             }
         }
 
+        protected override void OnDestroy()
+        {
+            settingsPanel.UnSubscribe();
+        }
     }
 }

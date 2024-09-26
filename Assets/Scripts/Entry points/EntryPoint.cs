@@ -10,6 +10,7 @@ namespace EntryPoint
         protected static LoadingScreen loadingPanel;
 
         protected abstract void Finish();
+        protected abstract void OnDestroy();
     }
 
 }

@@ -19,10 +19,9 @@ namespace EntryPoint
 
         protected override void Finish() => OnStateUpdated?.Invoke(true);
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
             settingsPanel.UnSubscribe();
         }
-
     }
 }
