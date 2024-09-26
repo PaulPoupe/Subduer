@@ -28,7 +28,7 @@ public class EscMenu : Panel
         KeyEventBus.OnEscape += Open;
     }
 
-    protected override void UnSubscribe()
+    public override void UnSubscribe()
     {
         OnClose -= settingsPanel.Close;
         KeyEventBus.OnEscape -= Open;

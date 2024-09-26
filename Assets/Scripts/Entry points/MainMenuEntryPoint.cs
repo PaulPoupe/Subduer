@@ -14,14 +14,14 @@ namespace EntryPoint
             //Init...
             //Init...
             //Init...
-
-
             Finish();
         }
 
-        protected override void Finish()
+        protected override void Finish() => OnStateUpdated?.Invoke(true);
+
+        private void OnDestroy()
         {
-            OnStateUpdated?.Invoke(true);
+            settingsPanel.UnSubscribe();
         }
 
     }
