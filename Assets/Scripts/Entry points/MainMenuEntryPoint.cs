@@ -24,5 +24,10 @@ namespace EntryPoint
             OnStateUpdated?.Invoke(true);
         }
 
+        private void OnDestroy()
+        {
+            settingsPanel.UnSubscribe();
+        }
+
     }
 }

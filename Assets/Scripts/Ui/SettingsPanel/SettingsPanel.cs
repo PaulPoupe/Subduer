@@ -7,7 +7,7 @@ public class SettingsPanel : Panel
             KeyEventBus.OnEscape += Close;
     }
 
-    protected override void UnSubscribe()
+    public override void UnSubscribe()
     {
         if (isExternalPanel)
             KeyEventBus.OnEscape -= Close;
