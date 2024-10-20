@@ -8,15 +8,9 @@ namespace EntryPoint
     {
         [SerializeField] Panel settingsPanel;
 
-        private void Start()
+        protected override void Init()
         {
             settingsPanel.Initialize(true);
-            //Init...
-            //Init...
-            //Init...
-
-
-            Finish();
         }
 
         protected override void Finish()
@@ -24,10 +18,9 @@ namespace EntryPoint
             OnStateUpdated?.Invoke(true);
         }
 
-        private void OnDestroy()
+        protected override void UnSubscribe()
         {
             settingsPanel.UnSubscribe();
         }
-
     }
 }

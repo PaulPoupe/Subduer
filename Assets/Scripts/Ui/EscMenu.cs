@@ -15,7 +15,6 @@ public class EscMenu : Panel
         SceneManager.LoadScene(CurentScenes.mainMenu);
     }
 
-
     public override void Initialize(bool isExternalPanel, Panel settingsPanel)
     {
         this.settingsPanel = settingsPanel;

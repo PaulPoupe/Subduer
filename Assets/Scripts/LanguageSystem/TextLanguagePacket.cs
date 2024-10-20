@@ -29,7 +29,7 @@ namespace LanguageSystem
             if (multyLangugeTexts.ContainsKey(language))
                 outputText = multyLangugeTexts[language];
             else
-                outputText = multyLangugeTexts[Settings.language.defaultLanguage];
+                outputText = multyLangugeTexts[Settings.instance.language.defaultLanguage];
             OnUpdated?.Invoke();
         }
 

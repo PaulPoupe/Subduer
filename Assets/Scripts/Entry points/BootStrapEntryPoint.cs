@@ -2,6 +2,10 @@ using UnityEngine;
 using LanguageSystem;
 using MySceneManagement;
 
+/* To do: 
+    1. CreateLoadingPanel это не должно быть в этом классе.
+*/
+
 namespace EntryPoint
 {
     [DisallowMultipleComponent]
@@ -13,18 +17,15 @@ namespace EntryPoint
         [SerializeField] private TextLanguagePacket[] textPokets;
 
 
-        private void Start()
+        private void Awake()
         {
             if (loadingPanel == null)
                 CreateLoadingScreen();
+        }
 
-            Settings.InitializeLanguageSettings(textPokets);
-            //Init...
-            //Init...
-            //Init...
-            //Init...
-
-            Finish();
+        protected override void Init()
+        {
+            Settings.instance.InitializeLanguageSettings(textPokets);
         }
 
         protected override void Finish()
@@ -33,9 +34,6 @@ namespace EntryPoint
             SceneManager.LoadScene(CurentScenes.mainMenu);
         }
 
-        /* To do: 
-            1. CreateLoadingPanel это не должно быть в этом классе.
-        */
         private void CreateLoadingScreen()
         {
             loadingPanel = Instantiate(loadingPanelPrefab);

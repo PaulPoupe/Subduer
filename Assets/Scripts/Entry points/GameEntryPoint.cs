@@ -12,18 +12,21 @@ namespace EntryPoint
         [SerializeField] private Panel escMenu;
         [SerializeField] private Panel settingsPanel;
 
-
-        private void Start()
+        protected override void Init()
         {
+            void InitCatalogs()
+            {
+                if (catalogs != null)
+                {
+                    CatalogInitializator catalogInitializator = new CatalogInitializator();
+                    catalogInitializator.Initialize(catalogs);
+                }
+            }
+
             InitCatalogs();
             escMenu.Initialize(true, settingsPanel);
             settingsPanel.Initialize(false);
             clock.StartClock();
-            //Init...
-            //Init...
-            //Init...
-
-            Finish();
         }
 
         protected override void Finish()
@@ -31,14 +34,9 @@ namespace EntryPoint
             OnStateUpdated?.Invoke(true);
         }
 
-        private void InitCatalogs()
+        protected override void UnSubscribe()
         {
-            if (catalogs != null)
-            {
-                CatalogInitializator catalogInitializator = new CatalogInitializator();
-                catalogInitializator.Initialize(catalogs);
-            }
+            settingsPanel.UnSubscribe();
         }
-
     }
 }

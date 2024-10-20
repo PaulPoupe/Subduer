@@ -1,3 +1,6 @@
-/* 
-To do : Автоматическое добовление возможных языков
-*/
+using UnityEngine;
+
+public class LanguageDropdown : MonoBehaviour
+{
+
+}

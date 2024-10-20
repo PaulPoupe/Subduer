@@ -13,5 +13,5 @@ public class SettingsPanel : Panel
             KeyEventBus.OnEscape -= Close;
     }
 
-    public void SetLanguage(int languageId) => Settings.language.SetLanguage(languageId);
+    public void SetLanguage(int languageId) => Settings.instance.language.SetLanguage(languageId);
 }
