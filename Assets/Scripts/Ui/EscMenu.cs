@@ -15,7 +15,6 @@ public class EscMenu : Panel
         SceneManager.LoadScene(CurentScenes.mainMenu);
     }
 
-
     public override void Initialize(bool isExternalPanel, Panel settingsPanel)
     {
         this.settingsPanel = settingsPanel;
@@ -28,7 +27,7 @@ public class EscMenu : Panel
         KeyEventBus.OnEscape += Open;
     }
 
-    protected override void UnSubscribe()
+    public override void UnSubscribe()
     {
         OnClose -= settingsPanel.Close;
         KeyEventBus.OnEscape -= Open;

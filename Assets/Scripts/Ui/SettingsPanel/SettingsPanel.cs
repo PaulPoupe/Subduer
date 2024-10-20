@@ -7,11 +7,11 @@ public class SettingsPanel : Panel
             KeyEventBus.OnEscape += Close;
     }
 
-    protected override void UnSubscribe()
+    public override void UnSubscribe()
     {
         if (isExternalPanel)
             KeyEventBus.OnEscape -= Close;
     }
 
-    public void SetLanguage(int languageId) => Settings.language.SetLanguage(languageId);
+    public void SetLanguage(int languageId) => Settings.instance.language.SetLanguage(languageId);
 }

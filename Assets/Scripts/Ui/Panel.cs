@@ -15,7 +15,7 @@ public abstract class Panel : MonoBehaviour
     public virtual void Initialize(bool isExternalPanel, Panel chiledPanel) => Initialize(isExternalPanel);
 
     protected abstract void Subscribe();
-    protected abstract void UnSubscribe();
+    public abstract void UnSubscribe();
 
     private void OnDestroy() => UnSubscribe();
 
